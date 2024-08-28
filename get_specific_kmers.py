@@ -15,7 +15,7 @@ def read_kmer_file(file):
 
 # read query file
 query_kmers_file = argv[1]
-query_cenhap = query_kmers_file.split('_')[1].split('.')[0] # HG02622.pat.cen12_[2].kmers
+query_cenhap = query_kmers_file.split('_')[-1].split('.')[0] # HG02622.pat.cen12_[2].kmers
 db_dir = argv[2]
 db_kmers_files = listdir(db_dir)
 db_kmers_files.remove(query_kmers_file)
@@ -37,7 +37,7 @@ for kmer in query_kmers:
     kmer_counts = []
     threshold = kmer_cnt / 10
     for db_genome in db_kmers:
-        db_cenhap = db_genome.split('_')[-1] # HG02622.pat.cen12_[2]
+        db_cenhap = db_genome.split('_')[-1].split('.')[0] # HG02622.pat.cen12_[2]
         # no such kmer => write
         if kmer not in db_kmers[db_genome]:
             kmer_counts.append('0')
@@ -63,4 +63,3 @@ print('\t'.join(header))
 # print good kmers
 for line in good_kmers:
     print('\t'.join(line))
-

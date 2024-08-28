@@ -2,7 +2,7 @@
 # Usage: ./count_all_kmers.sh <dit_with_fastas> <kmer_length>
 
 # Config
-script_dir="/home/fedor/sync/bioinformatics/centromere/soft/kmerer"
+script_dir="/private/home/fryabov/soft/kmerer"
 seq_dir=$1
 # specify kmer length
 kmer_length=$2
