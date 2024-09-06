@@ -2,7 +2,7 @@
 # Usage: ./count_all_kmers.sh <dit_with_fastas> <kmer_length>
 
 # Config
-script_dir="/private/home/fryabov/soft/kmerer"
+script_dir="$(dirname "$(readlink -f "$0")")"
 seq_dir=$1
 # specify kmer length
 kmer_length=$2
