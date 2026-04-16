@@ -1,6 +1,8 @@
 import os
 import pandas as pd
 from sys import argv
+from openpyxl import load_workbook
+
 
 directory = argv[1]
 xlsx_file_path = argv[2]
@@ -33,7 +35,6 @@ with pd.ExcelWriter(xlsx_file_path, engine='xlsxwriter') as writer:
 
 print("xlsx created")
 
-from openpyxl import load_workbook
 
 # Load the existing Excel file
 workbook = load_workbook(xlsx_file_path)

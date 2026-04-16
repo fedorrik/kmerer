@@ -34,12 +34,17 @@ def main():
         help="Background percent threshold (default: 0.1)"
     )
     parser.add_argument(
+        "-ct", "--cnt_threshold",
+        type=int,
+        default=30,
+        help="Minimal target count threshold (default: 30)"
+    )
+    parser.add_argument(
         "-ht", "--hard_threshold",
         action="store_true",
         help="Apply hard threshold filter: remove kmers with bg_percent > threshold"
     )
     args = parser.parse_args()
-
     query_kmers_file = os.path.basename(args.name)
     query_cenhap = query_kmers_file.split('_')[-1].split('.')[0]
 
@@ -59,7 +64,7 @@ def main():
     good_kmers = []
     for kmer in query_kmers:
         kmer_cnt = int(query_kmers[kmer])
-        if kmer_cnt < 30:
+        if kmer_cnt < args.cnt_threshold:
             continue
 
         kmer_counts = []
